@@ -1,4 +1,5 @@
 workers = {}
+worker_id = None
 
 def display_menu():
     print('\nWorkers Management System')
@@ -9,24 +10,44 @@ def display_menu():
     print('5. Exit')
 
 def add_worker():
-    fname = input("Enter First Name:")
-    lname = input("Enter Last Name:")
-    hourly_rate = float(input("Enter Hourly Rate:"))
+    fname = input("Enter First Name: ")
+    lname = input("Enter Last Name: ")
+
+    while True:
+        try:
+            hourly_rate = float(input("Enter Hourly Rate: "))
+            break 
+        except ValueError:
+            print("Error: Please enter a valid number for the hourly rate.")
+            
+    global worker_id
     worker_id = fname.lower() + "_" + lname.lower()
-    workers[worker_id] = {'First_Name':fname , 'Last_Name':lname, 'Hourly_Rate':hourly_rate}    
+    workers[worker_id] = {'First_Name': fname, 'Last_Name': lname, 'Hourly_Rate': hourly_rate}
     print(f"Worker {fname} {lname} added successfully.")
 
 def update_worker():
-    worker_id = input("Enter the worker's ID (First-Name_Last-Name) to update: ").lower()
-    if worker_id in workers:
+    # worker_info = workers.values()
+    # print(worker_info)
+    # print("hiii")
+    if worker_id:
+    # worker_id = input("Enter the worker's ID (First-Name_Last-Name) to update: ").lower()
+    # if worker_id in workers:
         fname = input("Enter First Name:")
         lname = input("Enter Last Name:")
-        hourly_rate = float(input("Enter Hourly Rate:"))
-        worker_id = fname.lower() + "_" + lname.lower()
+        
+        while True:
+            try:
+                hourly_rate = float(input("Enter Hourly Rate: "))
+                break 
+            except ValueError:
+                print("Error: Please enter a valid number for the hourly rate.")
+    
         workers[worker_id] = {'First_Name':fname , 'Last_Name':lname, 'Hourly_Rate':hourly_rate}    
         print(f"Worker {fname} {lname} updated successfully.")
     else:
         print('Worker not found!!')
+
+
 
 
 def delete_worker():
