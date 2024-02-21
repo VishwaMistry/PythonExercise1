@@ -27,8 +27,6 @@ def add_worker():
 
 def update_worker():
     # worker_info = workers.values()
-    # print(worker_info)
-    # print("hiii")
     if worker_id:
     # worker_id = input("Enter the worker's ID (First-Name_Last-Name) to update: ").lower()
     # if worker_id in workers:
